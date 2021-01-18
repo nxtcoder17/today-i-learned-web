@@ -44,7 +44,7 @@ export const PostContent = styled.div`
   z-index: 9999999;
   padding: ${doSpacing(2)};
   font-size: 1rem;
-  font-family: 'Ubuntu';
+  font-family: 'Acme';
 `;
 
 export const TagsContainer = styled(FlexBox)``;

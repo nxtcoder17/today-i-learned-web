@@ -95,7 +95,12 @@ const TILHome = () => {
                 </PostContent>
               </div>
               <TagsContainer>
-                <Tag to="/tags/vim">vim</Tag>
+                {post.tags.length > 0 &&
+                  post.tags.map((tag) => (
+                    <Tag to={`/tags/${tag}`} key={nanoid()}>
+                      {tag}
+                    </Tag>
+                  ))}
                 <FlexBox justify="flex-end" gap={2} />
               </TagsContainer>
             </BlogPostContainer>
