@@ -28,7 +28,7 @@ export const PostTitle = styled.h2`
 `;
 
 export const PostSubtitle = styled(PostTitle)`
-  font-size: 1.35rem;
+  font-size: 1rem;
   background: linear-gradient(to left, #2ebf91, #8360c3);
   background-clip: text;
   -webkit-background-clip: text;
