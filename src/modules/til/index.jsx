@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import { Route } from 'react-router-dom';
-import { TILHome } from './pages/home';
+
+const TILHomePage = lazy(() => import('./pages/home'));
 
 export const TILModule = () => {
   return (
     <>
-      <Route exact="/" component={TILHome} />
+      <Route exact path="/" component={TILHomePage} />
     </>
   );
 };

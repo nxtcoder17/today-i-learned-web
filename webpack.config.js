@@ -1,14 +1,34 @@
 const webpack = require('webpack');
 const path = require('path');
 const DotEnv = require('dotenv-webpack');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const BrotliGzipPlugin = require('brotli-gzip-webpack-plugin');
 
 module.exports = (env = { development: true }) => {
   const IS_PRODUCTION = env.production === true;
-
   const productionOnly = {
     mode: 'production',
     optimization: {
-      minimize: true,
+      // minimize: true,
+      minimizer: [
+        new UglifyJsPlugin({
+          parallel: 4,
+          uglifyOptions: {
+            comments: false,
+            mangle: true,
+            compress: {
+              sequences: true,
+              dead_code: true,
+              conditionals: true,
+              booleans: true,
+              unused: true,
+              if_return: true,
+              join_vars: true,
+              drop_console: true,
+            },
+          },
+        }),
+      ],
     },
   };
 
@@ -69,6 +89,27 @@ module.exports = (env = { development: true }) => {
         path: IS_PRODUCTION ? './env/production.env' : './env/development.env',
       }),
       new webpack.HotModuleReplacementPlugin(),
+      new webpack.optimize.ModuleConcatenationPlugin(),
+      ...(IS_PRODUCTION
+        ? [
+            new BrotliGzipPlugin({
+              asset: '[path].br[query]',
+              algorithm: 'brotli',
+              test: /\.(js|css|html|svg)$/,
+              threshold: 10240,
+              minRatio: 0.8,
+              quality: 11,
+            }),
+            new BrotliGzipPlugin({
+              asset: '[path].gz[query]',
+              algorithm: 'gzip',
+              test: /\.(js|css|html|svg)$/,
+              threshold: 10240,
+              minRatio: 0.8,
+              quality: 11,
+            }),
+          ]
+        : []),
     ],
     resolve: {
       extensions: ['.jsx', '.js'],

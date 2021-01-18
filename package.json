@@ -4,11 +4,12 @@
   "description": "",
   "main": ".eslintrc.js",
   "scripts": {
+    "analyze": "source-map-explorer 'public/dist/*.js'",
+    "prebuild": "npm run clean",
     "build": "webpack --env.production --progress",
     "clean": "rm -rf public/dist",
-    "dev": "webpack-dev-server --progress",
-    "prebuild": "npm run clean",
     "predev": "npm run clean",
+    "dev": "webpack-dev-server --progress",
     "start": "npm run dev"
   },
   "keywords": [],
@@ -21,10 +22,12 @@
     "@babel/preset-typescript": "^7.12.7",
     "@babel/runtime": "^7.12.5",
     "@types/react-router-dom": "^5.1.7",
+    "axios": "^0.21.1",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
     "babel-plugin-styled-components": "^1.12.0",
     "babel-polyfill": "^6.26.0",
+    "brotli-webpack-plugin": "^1.1.0",
     "css-loader": "^5.0.1",
     "dotenv": "^8.2.0",
     "dotenv-webpack": "^6.0.0",
@@ -49,6 +52,7 @@
     "react-dom": "^16.14.0",
     "react-icons": "^4.1.0",
     "react-is": "^16.13.1",
+    "react-markdown": "^5.0.3",
     "react-router-dom": "^5.2.0",
     "sass-loader": "^10.1.0",
     "style-loader": "^2.0.0",
@@ -58,5 +62,8 @@
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.1"
+  },
+  "devDependencies": {
+    "brotli-gzip-webpack-plugin": "^0.5.0"
   }
 }

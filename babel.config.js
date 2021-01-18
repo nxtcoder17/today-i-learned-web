@@ -6,7 +6,12 @@ module.exports = {
         runtime: 'automatic',
       },
     ],
-    '@babel/preset-env',
+    [
+      '@babel/preset-env',
+      {
+        modules: false,
+      },
+    ],
   ],
   plugins: ['babel-plugin-styled-components'],
 };
