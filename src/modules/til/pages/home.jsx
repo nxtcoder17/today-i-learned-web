@@ -1,6 +1,5 @@
 import { nanoid } from 'nanoid';
 import React, { useEffect, useState } from 'react';
-// import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import ReactMarkdown from 'react-markdown';
 import styled from 'styled-components';
 import { doSpacing, fromPalette } from '#commons/styled-components-util';
@@ -12,7 +11,6 @@ import {
   PostContent,
   PostSubtitle,
   PostTitle,
-  Signature,
   Tag,
   TagsContainer,
 } from '../components/blog-post-components';
@@ -83,11 +81,6 @@ const TILHome = () => {
                     <ReactMarkdown children={LoadingMD} />
                   </PostContent>
                 </div>
-                <TagsContainer>
-                  <FlexBox justify="flex-end" gap={2}>
-                    <Signature />
-                  </FlexBox>
-                </TagsContainer>
               </BlogPostContainer>
             </>
           )}
@@ -103,9 +96,7 @@ const TILHome = () => {
               </div>
               <TagsContainer>
                 <Tag to="/tags/vim">vim</Tag>
-                <FlexBox justify="flex-end" gap={2}>
-                  <Signature author={post.author} />
-                </FlexBox>
+                <FlexBox justify="flex-end" gap={2} />
               </TagsContainer>
             </BlogPostContainer>
           ))}
