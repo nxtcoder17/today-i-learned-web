@@ -59,7 +59,6 @@ const TILHome = () => {
 
   useEffect(() => {
     const inlineCodeBlocks = document.querySelectorAll(':not(pre)>code');
-    console.log(inlineCodeBlocks);
     inlineCodeBlocks.forEach((block) => block.classList.add('language-none'));
     window.Prism.highlightAll();
   }, [posts]);
@@ -67,10 +66,8 @@ const TILHome = () => {
   useEffect(() => {
     (async () => {
       const data = await fetchPosts();
-      setTimeout(() => {
-        setPosts(data.data);
-        window.Prism.highlightAll();
-      }, 1500);
+      setPosts(data.data);
+      window.Prism.highlightAll();
     })();
   }, []);
 

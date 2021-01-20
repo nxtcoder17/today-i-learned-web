@@ -1,15 +1,14 @@
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import React from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 import { doSpacing } from '#commons/styled-components-util';
 import { FlexBox } from '#commons/components/flex-box';
-import { Emoji } from '#commons/components/emoji-comp';
 
 export const BlogPostContainer = styled.div`
   display: grid;
   grid-template-rows: 1fr 32px;
   padding: ${doSpacing(4)};
-  background-color: rgba(33, 33, 32, 0.45);
+  background-color: rgba(33, 33, 32, 0.65);
   backdrop-filter: blur(4px);
   border: 0.1rem solid black;
   border-radius: 16px;
@@ -37,15 +36,39 @@ export const PostSubtitle = styled(PostTitle)`
   display: flex;
   justify-content: flex-end;
   flex-direction: row;
-
 `;
 
 export const PostContent = styled.div`
   color: white;
   z-index: 9999999;
   padding: ${doSpacing(2)};
-  font-size: 1rem;
-  font-family: 'Acme';
+  font-size: 0.9rem;
+  line-height: 1.5;
+  font-family: 'lato', sans-serif;
+
+  a {
+    text-decoration: unset;
+    font-family: 'Acme';
+    font-size: 0.75rem;
+    color: #d34148;
+  }
+
+  code {
+    &.language-none {
+      padding: 0 ${doSpacing(1)};
+    }
+    font-family: 'Fura Code';
+    font-size: 0.85rem;
+  }
+
+  pre[class*='language-'] {
+    padding: 0.5rem;
+  }
+
+  code[class*='language-'],
+  pre[class*='language-'] {
+    line-height: 1.25;
+  }
 `;
 
 export const TagsContainer = styled(FlexBox)``;
@@ -100,13 +123,4 @@ export const Author = styled.span`
       opacity: 1;
     }
   }
-`;
-
-export const Signature = styled(({ author, ...props }) => (
-  <span {...props}>
-    <Emoji symbol="✍️ " />
-    <Author>{author || 'nxtcoder17'}</Author>
-  </span>
-))`
-  transform: rotate(-7deg);
 `;
