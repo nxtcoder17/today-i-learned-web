@@ -37,6 +37,7 @@ export const PostSubtitle = styled(PostTitle)`
   display: flex;
   justify-content: flex-end;
   flex-direction: row;
+
 `;
 
 export const PostContent = styled.div`
