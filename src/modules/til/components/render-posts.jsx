@@ -36,7 +36,7 @@ const RenderPosts = ({ posts = [], next, prev }) => {
         <BlogPostContainer key={nanoid()}>
           <div>
             <PostTitle>{post.title}</PostTitle>
-            <PostSubtitle>{transformDate(new Date())}</PostSubtitle>
+            <PostSubtitle>{transformDate(post.date)}</PostSubtitle>
             <PostContent>
               <ReactMarkdown plugins={[RemarkGFM, RemarkBreaks]}>
                 {post.content}

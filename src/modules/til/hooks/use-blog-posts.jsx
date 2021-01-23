@@ -35,9 +35,11 @@ export function useBlogPosts(apiFn) {
   }
 
   useEffect(() => {
-    const inlineCodeBlocks = document.querySelectorAll(':not(pre)>code');
-    inlineCodeBlocks.forEach((block) => block.classList.add('language-none'));
-    window.Prism.highlightAll();
+    setTimeout(() => {
+      const inlineCodeBlocks = document.querySelectorAll(':not(pre)>code');
+      inlineCodeBlocks.forEach((block) => block.classList.add('language-none'));
+      window.Prism.highlightAll();
+    }, 250);
   }, [posts]);
 
   useEffect(() => {
