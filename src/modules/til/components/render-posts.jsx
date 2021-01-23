@@ -16,7 +16,7 @@ import {
 } from './blog-post-components';
 import LoadingPosts from './loading-posts-comp';
 
-const RenderPosts = ({ posts }) => {
+const RenderPosts = ({ posts = [] }) => {
   return (
     <>
       <LoadingPosts when={posts.length === 0} />
@@ -26,10 +26,9 @@ const RenderPosts = ({ posts }) => {
             <PostTitle>{post.title}</PostTitle>
             <PostSubtitle>{transformDate(new Date())}</PostSubtitle>
             <PostContent>
-              <ReactMarkdown
-                plugins={[RemarkGFM, RemarkBreaks]}
-                children={post.content}
-              />
+              <ReactMarkdown plugins={[RemarkGFM, RemarkBreaks]}>
+                {post.content}
+              </ReactMarkdown>
             </PostContent>
           </div>
           <TagsContainer>

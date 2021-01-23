@@ -1,30 +1,41 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { BiShareAlt } from 'react-icons/bi';
 import { doSpacing } from '#commons/styled-components-util';
 import { FlexBox } from '#commons/components/flex-box';
+import { MediaQuery } from '#commons/media-query';
 
 export const BlogPostContainer = styled.div`
   display: grid;
-  grid-template-rows: 1fr 32px;
-  padding: ${doSpacing(4)};
+  grid-template-rows: 1fr max-content;
   background-color: rgba(33, 33, 32, 0.65);
   backdrop-filter: blur(4px);
   border: 0.1rem solid black;
   border-radius: 16px;
-  overflow-y: none;
+  overflow-y: hidden;
+  overflow-x: auto;
+
+  padding: ${doSpacing(1)};
+
+  ${MediaQuery.md} {
+    padding: ${doSpacing(4)};
+  }
 `;
 
 export const PostTitle = styled.h2`
   z-index: 2;
   background: linear-gradient(45deg, #2ebf91, #8360c3);
   font-family: 'Dancing Script';
-  font-size: 3rem;
   background-clip: text;
   padding-left: ${doSpacing(2)};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
+  font-size: 2rem;
+  ${MediaQuery.md} {
+    font-size: 2.5rem;
+  }
 `;
 
 export const PostSubtitle = styled.span`
@@ -43,11 +54,19 @@ export const PostContent = styled.div`
   line-height: 1.5;
   font-family: 'lato', sans-serif;
 
+  pre {
+    overflow-x: hidden;
+    code {
+      white-space: pre-wrap;
+    }
+  }
+
   a {
     text-decoration: unset;
     font-family: 'Acme';
     font-size: 0.75rem;
     color: #d34148;
+    overflow-wrap: inherit;
   }
 
   code {
@@ -69,6 +88,7 @@ export const PostContent = styled.div`
 `;
 
 export const TagsContainer = styled(FlexBox)`
+  flex-wrap: wrap;
   gap: ${doSpacing(2)};
 `;
 

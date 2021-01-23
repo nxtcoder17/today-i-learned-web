@@ -24,9 +24,7 @@ const Page = styled.div`
 const Body = styled.div`
   display: grid;
   grid-row-gap: ${doSpacing(4)};
-  width: 100%;
   z-index: 2;
-
   width: min(800px, 100%);
 `;
 

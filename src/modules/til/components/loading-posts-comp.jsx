@@ -21,7 +21,8 @@ const LoadingPosts = ({ when }) => (
           <PostTitle>Loading ...</PostTitle>
           <PostSubtitle>{transformDate(new Date())}</PostSubtitle>
           <PostContent>
-            <ReactMarkdown children={LoadingMD} />
+            {/* <ReactMarkdown children={LoadingMD} /> */}
+            <ReactMarkdown>{LoadingMD}</ReactMarkdown>
           </PostContent>
         </div>
       </BlogPostContainer>
