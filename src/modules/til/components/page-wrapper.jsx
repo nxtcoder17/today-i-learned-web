@@ -29,40 +29,12 @@ const Body = styled.div`
   width: min(800px, 100%);
 `;
 
-const ActionButton = styled.button`
-  padding: ${doSpacing(2)};
-  font-family: 'Acme';
-  font-size: 1rem;
-  background: transparent;
-  border-radius: 15px;
-  backdrop-filter: blur(4px);
-  color: white;
-`;
-
-const PageWrapper = ({ prev, next, children }) => {
+const PageWrapper = ({ children }) => {
   return (
     <Wrapper>
       <BackgroundElement />
       <Page>
-        <Body>
-          {children}
-          <FlexBox justify="space-between">
-            {!next && <span />}
-            {next && (
-              <>
-                <ActionButton onClick={next} disabled={!next}>
-                  Previous Page
-                </ActionButton>
-              </>
-            )}
-            {!prev && <span />}
-            {prev && (
-              <ActionButton onClick={prev} disabled={!prev}>
-                Next Page
-              </ActionButton>
-            )}
-          </FlexBox>
-        </Body>
+        <Body>{children}</Body>
       </Page>
     </Wrapper>
   );

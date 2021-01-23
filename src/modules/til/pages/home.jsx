@@ -8,8 +8,8 @@ const TILHome = () => {
   const [posts, nextPage, prevPage] = useBlogPosts(fetchPosts);
 
   return (
-    <PageWrapper next={nextPage} prev={prevPage}>
-      <RenderPosts posts={posts} />
+    <PageWrapper>
+      <RenderPosts posts={posts} next={nextPage} prev={prevPage} />
     </PageWrapper>
   );
 };
