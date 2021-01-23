@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { BiShareAlt } from 'react-icons/bi';
 import { doSpacing } from '#commons/styled-components-util';
 import { FlexBox } from '#commons/components/flex-box';
 
@@ -26,13 +27,10 @@ export const PostTitle = styled.h2`
   -webkit-text-fill-color: transparent;
 `;
 
-export const PostSubtitle = styled(PostTitle)`
-  font-size: 1rem;
-  background: linear-gradient(to left, #2ebf91, #8360c3);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+export const PostSubtitle = styled.span`
+  font-size: 0.75rem;
+  font-family: 'Acme';
+  color: #2ebf91;
   display: flex;
   justify-content: flex-end;
   flex-direction: row;
@@ -40,9 +38,8 @@ export const PostSubtitle = styled(PostTitle)`
 
 export const PostContent = styled.div`
   color: white;
-  z-index: 9999999;
   padding: ${doSpacing(2)};
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   line-height: 1.5;
   font-family: 'lato', sans-serif;
 
@@ -71,7 +68,9 @@ export const PostContent = styled.div`
   }
 `;
 
-export const TagsContainer = styled(FlexBox)``;
+export const TagsContainer = styled(FlexBox)`
+  gap: ${doSpacing(2)};
+`;
 
 export const Tag = styled((props) => <Link {...props} />)`
   ::before {
@@ -81,6 +80,19 @@ export const Tag = styled((props) => <Link {...props} />)`
   font-size: 1.5rem;
   text-decoration: unset;
   font-family: 'Dancing Script';
+`;
+
+export const ShareBtn = styled((props) => (
+  <Link {...props}>
+    <FlexBox gap={1}>
+      <BiShareAlt title="Share" />
+      Share
+    </FlexBox>
+  </Link>
+))`
+  font-size: 0.9rem;
+  font-family: 'Acme';
+  text-decoration: unset;
 `;
 
 export const Author = styled.span`

@@ -1,11 +1,13 @@
 import React from 'react';
-import { fetchPosts } from '../api';
+import { useParams } from 'react-router-dom';
+import { getById } from '../api';
 import PageWrapper from '../components/page-wrapper';
 import RenderPosts from '../components/render-posts';
 import { useBlogPosts } from '../hooks/use-blog-posts';
 
-const TILHome = () => {
-  const [posts] = useBlogPosts(fetchPosts);
+const UniquePostPage = () => {
+  const { id } = useParams();
+  const [posts] = useBlogPosts(() => getById(id));
 
   return (
     <PageWrapper>
@@ -14,4 +16,4 @@ const TILHome = () => {
   );
 };
 
-export default TILHome;
+export default UniquePostPage;

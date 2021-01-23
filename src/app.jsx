@@ -18,7 +18,7 @@ export default () => {
       <Root>
         <Suspense fallback={<LoadingIndicator when />}>
           <BrowserRouter>
-            <Route exact path="/" component={TILModule} />
+            <Route path="/" component={TILModule} />
           </BrowserRouter>
         </Suspense>
       </Root>
