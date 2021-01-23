@@ -5,10 +5,10 @@ import RenderPosts from '../components/render-posts';
 import { useBlogPosts } from '../hooks/use-blog-posts';
 
 const TILHome = () => {
-  const [posts] = useBlogPosts(fetchPosts);
+  const [posts, nextPage, prevPage] = useBlogPosts(fetchPosts);
 
   return (
-    <PageWrapper>
+    <PageWrapper next={nextPage} prev={prevPage}>
       <RenderPosts posts={posts} />
     </PageWrapper>
   );

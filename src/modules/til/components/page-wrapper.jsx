@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { doSpacing, fromPalette } from '#commons/styled-components-util';
 import { BackgroundElement } from './background-element';
+import { FlexBox } from '#commons/components/flex-box';
 
 const Wrapper = styled.div`
   height: 100%;
@@ -28,12 +29,40 @@ const Body = styled.div`
   width: min(800px, 100%);
 `;
 
-const PageWrapper = ({ children }) => {
+const ActionButton = styled.button`
+  padding: ${doSpacing(2)};
+  font-family: 'Acme';
+  font-size: 1rem;
+  background: transparent;
+  border-radius: 15px;
+  backdrop-filter: blur(4px);
+  color: white;
+`;
+
+const PageWrapper = ({ prev, next, children }) => {
   return (
     <Wrapper>
       <BackgroundElement />
       <Page>
-        <Body>{children}</Body>
+        <Body>
+          {children}
+          <FlexBox justify="space-between">
+            {!next && <span />}
+            {next && (
+              <>
+                <ActionButton onClick={next} disabled={!next}>
+                  Previous Page
+                </ActionButton>
+              </>
+            )}
+            {!prev && <span />}
+            {prev && (
+              <ActionButton onClick={prev} disabled={!prev}>
+                Next Page
+              </ActionButton>
+            )}
+          </FlexBox>
+        </Body>
       </Page>
     </Wrapper>
   );

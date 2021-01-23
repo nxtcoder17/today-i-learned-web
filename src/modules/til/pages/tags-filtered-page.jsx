@@ -7,10 +7,12 @@ import RenderPosts from '../components/render-posts';
 
 const TagsFilteredPage = () => {
   const { tag } = useParams();
-  const [posts] = useBlogPosts(() => fetchByTag(tag));
+  const [posts, nextPage, prevPage] = useBlogPosts(({ page, size }) =>
+    fetchByTag({ tag, page, size })
+  );
 
   return (
-    <PageWrapper>
+    <PageWrapper next={nextPage} prev={prevPage}>
       <RenderPosts posts={posts} />
     </PageWrapper>
   );

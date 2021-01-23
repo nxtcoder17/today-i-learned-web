@@ -10,7 +10,7 @@ const UniquePostPage = () => {
   const [posts] = useBlogPosts(() => getById(id));
 
   return (
-    <PageWrapper>
+    <PageWrapper next={null} prev={null}>
       <RenderPosts posts={posts} />
     </PageWrapper>
   );
