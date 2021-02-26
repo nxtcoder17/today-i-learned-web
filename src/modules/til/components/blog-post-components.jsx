@@ -52,12 +52,18 @@ export const PostContent = styled.div`
   padding: ${doSpacing(2)};
   font-size: 0.85rem;
   line-height: 1.5;
-  font-family: 'lato', sans-serif;
+  font-family: 'Exo 2', sans-serif;
 
   pre {
     overflow-x: hidden;
     code {
       white-space: pre-wrap;
+    }
+  }
+  ${MediaQuery.md} {
+    overflow-x: unset;
+    code {
+      white-space: unset;
     }
   }
 
@@ -75,6 +81,9 @@ export const PostContent = styled.div`
     }
     font-family: 'Fura Code';
     font-size: 0.85rem;
+    ${MediaQuery.md} {
+      font-size: 0.8rem;
+    }
   }
 
   pre[class*='language-'] {
@@ -97,9 +106,10 @@ export const Tag = styled((props) => <Link {...props} />)`
     content: '#';
   }
   color: #398dba;
-  font-size: 1.5rem;
+  font-size: 0.8rem;
   text-decoration: unset;
-  font-family: 'Dancing Script';
+  // font-family: 'Dancing Script';
+  font-family: 'Acme';
 `;
 
 export const ShareBtn = styled((props) => (

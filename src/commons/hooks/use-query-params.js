@@ -1,7 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
-
-const { useState } = require('react');
+import { useEffect, useState } from 'react';
 
 export const useQueryParams = () => {
   const location = useLocation();
